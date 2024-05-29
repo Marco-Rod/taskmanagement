@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="links">
+        <a href="{% url 'task:create_task' %}">Crear</a>
+        <a href="{% url 'task:list_task' %}">Listar</a>
+    </div>
+{% endblock %}

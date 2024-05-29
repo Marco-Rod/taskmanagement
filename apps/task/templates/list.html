@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content">
+    <h2>Lista de tareas</h2>
+    <a href="{% url 'task:create_task' %}">Crear tarea</a>
+    <ul>
+        {% for task in object_list %}
+            <li>
+                <a href="{% url 'task:update_task' task.id %}">{{task.id}} - {{ task.title }} - {{task.email}}</a>
+                <form method="post" action="{% url 'task:delete_task' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No hay tareas.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
